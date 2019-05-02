@@ -15,7 +15,21 @@ export class PostService {
    }
 
   emitPost() {
+    this.trier();
     this.postSubject.next(this.posts);
+  }
+
+  trier() {
+    let tempon;
+    for (let i = 0; i < this.posts.length - 1; i += 1) {
+      for (let j = i; j < this.posts.length; j += 1) {
+        if (this.posts[i].loveIts < this.posts[j].loveIts) {
+          tempon = this.posts[i];
+          this.posts[i] = this.posts[j];
+          this.posts[j] = tempon;
+        }
+      }
+    }
   }
   deletePost(postId: number) {
     // @ts-ignore
@@ -42,7 +56,7 @@ export class PostService {
         this.posts[i].loveIts++;
       }
     }
-    // this.emitPost();
+    this.emitPost();
   }
 
   dontLoveIt(postId: number) {
@@ -53,6 +67,6 @@ export class PostService {
         this.posts[i].loveIts--;
       }
     }
-    // this.emitPost();
+    this.emitPost();
   }
 }
