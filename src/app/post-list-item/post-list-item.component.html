@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" *ngIf="posts.length !== 0">
+      <h2>Posts :  </h2>
+      <ul>
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+      </ul>
+    </div>
+    <div class="col-12 modal-dialog-centered justify-content-center text-center" *ngIf="posts.length === 0">
+      <div class="h2">Aucun poste publié</div>
+    </div>
+  </div>
+</div>
