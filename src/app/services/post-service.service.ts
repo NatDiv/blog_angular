@@ -11,17 +11,26 @@ export class PostService {
   posts: Post[] = [];
   postSubject =  new Subject<Post[]>();
 
-  constructor() { }
+  constructor() {
+   }
 
-  emitPost(){
+  emitPost() {
     this.postSubject.next(this.posts);
   }
-
-  supprimerPost(id_post: number){
-
+  deletePost(postId: number) {
+    // @ts-ignore
+    // tslint:disable-next-line:prefer-for-of
+    for (const i = 0; i < this.posts.length; i++ ) {
+      if (this.posts[i].id === postId) {
+        this.posts.splice(i, 1);
+      }
+    }
+    this.emitPost();
   }
 
-  ajouterPost(post: Post){
-
+  ajouterPost(post: Post) {
+    post.id = this.posts.length;
+    this.posts.push(post);
+    this.emitPost();
   }
 }
