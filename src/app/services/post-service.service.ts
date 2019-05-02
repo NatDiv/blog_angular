@@ -33,4 +33,26 @@ export class PostService {
     this.posts.push(post);
     this.emitPost();
   }
+
+  loveIt(postId: number) {
+    // @ts-ignore
+    // tslint:disable-next-line:prefer-for-of
+    for ( const i = 0; i < this.posts.length; i++ ) {
+      if (this.posts[i].id === postId) {
+        this.posts[i].loveIts++;
+      }
+    }
+    // this.emitPost();
+  }
+
+  dontLoveIt(postId: number) {
+    // @ts-ignore
+    // tslint:disable-next-line:prefer-for-of
+    for (const i = 0; i < this.posts.length; i += 1 ) {
+      if (this.posts[i].id === postId) {
+        this.posts[i].loveIts--;
+      }
+    }
+    // this.emitPost();
+  }
 }

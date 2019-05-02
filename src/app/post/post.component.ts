@@ -16,12 +16,12 @@ export class PostComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDontLoveIt() {
-    this.post.loveIts--;
+  onDontLoveIt(postId: number) {
+    this.postService.dontLoveIt(postId);
   }
 
-  onLoveIt() {
-    this.post.loveIts++;
+  onLoveIt(postId: number) {
+    this.postService.loveIt(postId);
   }
   onDelete(postId: number) {
     this.postService.deletePost(postId);
