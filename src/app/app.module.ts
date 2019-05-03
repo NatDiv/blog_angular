@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostListItemComponent } from './post-list-item/post-list-item.component';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: 'posts', component: PostListItemComponent},
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
